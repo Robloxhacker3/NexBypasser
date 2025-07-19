@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Key Success</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+      color: white;
+      background: black;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    pre {
+      background: #111;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      border-radius: 10px;
+      font-size: 20px;
+      user-select: all;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Verification Complete!</h1>
+  <p>Your API Key:</p>
+  <pre id="show-key">Loading...</pre>
+
+  <script>
+    async function getKey() {
+      const res = await fetch("/api/genkey");
+      const json = await res.json();
+      document.getElementById("show-key").textContent = json.key + " (expires in 24h)";
+    }
+    getKey();
+  </script>
+</body>
+</html>
